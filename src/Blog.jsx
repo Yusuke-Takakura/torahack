@@ -1,5 +1,10 @@
 import React from 'react';
 import Article from './Article';
+// import { Foo, Bar } from './components/FooBar'
+//下と同値
+//基本的には１ファイルに１モジュール
+import * as FooBar from './components/FooBar';
+import Hoge from './components/Hoge';
 
 //クラスコンポーネント　reactのcomponentを継承している
 class Blog extends React.Component {
@@ -63,6 +68,9 @@ class Blog extends React.Component {
                     toggle={() => this.togglePublished()}
                     count={this.state.count}
                 />
+                <FooBar.Foo />
+                <FooBar.Bar />
+                <Hoge />
             </>
         )
     }
