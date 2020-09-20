@@ -4,6 +4,7 @@ import Article from './Article';
 //クラスコンポーネント　reactのcomponentを継承している
 class Blog extends React.Component {
     //classなのでconstructorの初期化が必要
+    //constractorはstateの初期化
     constructor(props) {
         //superを指定するとthis.propsが使用可能になる
         super(props);
@@ -14,12 +15,16 @@ class Blog extends React.Component {
         };
     };
 
+    //最初のrenderが走ったときに一度だけ呼ばれる
+    //リスナーの設定やAPI通信に使われる
     componentDidMount() {
         //ボタンがクリックされたらいいねをカウントアップする
         //関数は関数型か関数だけを渡す記述　今回は関数だけを渡している
         document.getElementById("counter").addEventListener('click', this.countUp)
     }
 
+    //renderが走るたびに呼ばれる
+    //スクロールイベントや条件付きイベント
     componentDidUpdate() {
         //いいね数か10を超えたらカウントをリセットする
         if (this.state.count >= 10) {
@@ -27,6 +32,9 @@ class Blog extends React.Component {
         }
     }
 
+    //コンポーネントが破棄される直前
+    //リソースを解除するため
+    //リスナーの解除など
     componentWillUnmount() {
         document.getElementById("counter").removeEventListener("click", this.countUp)
     }
@@ -44,6 +52,7 @@ class Blog extends React.Component {
         })
     };
 
+    //VDOMを描画
     render() {
         const authorName = "ultraK"
         return (
