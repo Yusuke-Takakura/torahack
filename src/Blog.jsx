@@ -45,6 +45,9 @@ const Blog = () => {
             <Article
                 title={"Reactの使い方"}
             />
+            <FooBar.Foo />
+            <FooBar.Bar />
+            <Hoge />
         </>
     )
 
